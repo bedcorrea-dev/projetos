@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Alimentação Escolar</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#16a34a">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="app">
+
+  <!-- LOGIN -->
+  <div id="loginPage" class="center">
+    <div class="card login">
+      <h2>🍽️ Alimentação Escolar</h2>
+      <input id="email" placeholder="Usuário">
+      <input id="senha" type="password" placeholder="Senha">
+      <button onclick="login()">Entrar</button>
+      <p class="hint">Administrador | Cozinha | Nutricionista</p>
+    </div>
+  </div>
+
+  <!-- SISTEMA -->
+  <div id="system" class="hidden">
+
+    <aside class="sidebar">
+      <h2> &#127869 REFEIÇÃO</h2>
+      <button onclick="navigate('dashboard')"><span class="material-icons">dashboard</span> Dashboard</button>
+      <button onclick="navigate('presenca')"><span class="material-icons">qr_code_scanner</span> Presença</button>
+      <button onclick="navigate('estoque')"><span class="material-icons">inventory</span> Estoque</button>
+      <button onclick="navigate('relatorios')"><span class="material-icons">bar_chart</span> Relatórios</button>
+      <button onclick="logout()"><span class="material-icons">logout</span> Sair</button>
+    </aside>
+
+    <main class="content">
+      <button class="menuBtn" onclick="toggleMenu()">☰</button>
+
+      <!-- DASHBOARD -->
+      <section id="dashboard" class="page">
+        <h1>Dashboard</h1>
+        <div class="cards">
+          <div class="card"><h3>Alunos</h3><p id="totalAlunos"></p></div>
+          <div class="card"><h3>Hoje alimentados</h3><p id="alimentadosHoje"></p></div>
+          <div class="card"><h3>Faltantes</h3><p id="faltantes"></p></div>
+        </div>
+      </section>
+
+      <!-- PRESENÇA -->
+      <section id="presenca" class="page hidden">
+        <h1>Registrar Refeição por QR Code</h1>
+
+        <div id="reader"></div>
+        <button onclick="iniciarScanner()">Iniciar câmera</button>
+
+        <h3>Alunos que comeram hoje</h3>
+        <ul id="listaPresenca"></ul>
+      </section>
+
+      <!-- ESTOQUE -->
+      <section id="estoque" class="page hidden">
+        <h1>Controle de Estoque</h1>
+        <input id="novoItem" placeholder="Novo alimento">
+        <input id="qtdItem" type="number" placeholder="Quantidade">
+        <button onclick="addItem()">Adicionar</button>
+        <ul id="listaEstoque"></ul>
+      </section>
+
+      <!-- RELATÓRIOS -->
+      <section id="relatorios" class="page hidden">
+        <h1>Relatório Mensal</h1>
+        <button onclick="gerarRelatorio()">Gerar</button>
+        <div id="relatorioBox"></div>
+      </section>
+
+    </main>
+  </div>
+
+</div>
+<script src="https://unpkg.com/html5-qrcode"></script>
+<script src="app.js"></script>
+</body>
+</html>
