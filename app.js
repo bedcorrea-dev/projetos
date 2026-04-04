@@ -1,7 +1,7 @@
 // BANCO SIMULADO (localStorage)
 
 let alunos = JSON.parse(localStorage.getItem("alunos")) || [
-  {id:"1",nome:"João"},
+  {id:"1",nome:"Benedito de Oliveira Corrêa"},
   {id:"2",nome:"Maria"},
   {id:"3",nome:"Pedro"},
   {id:"4",nome:"Ana"}
