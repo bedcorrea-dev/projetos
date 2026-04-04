@@ -102,7 +102,7 @@ function iniciarScanner() {
     (errorMessage) => {}
   );
 }
-
+//adicionar alunos 
 function registrarPresencaQR(id) {
   let aluno = alunos.find(a => a.id === id);
   if (!aluno) {
@@ -127,4 +127,28 @@ if ("serviceWorker" in navigator) {
 }
 function toggleMenu(){
   document.querySelector(".sidebar").classList.toggle("open")
+}
+function importarAlunos(){
+  const file = document.getElementById("fileInput").files[0];
+  if(!file) return alert("Selecione o arquivo CSV");
+
+  const reader = new FileReader();
+
+  reader.onload = function(e){
+    const linhas = e.target.result.split("\n");
+    alunos = [];
+
+    linhas.slice(1).forEach(linha=>{
+      const [id,nome] = linha.split(",");
+      if(id && nome){
+        alunos.push({id:id.trim(), nome:nome.trim()});
+      }
+    });
+
+    localStorage.setItem("alunos", JSON.stringify(alunos));
+    alert("Alunos importados com sucesso!");
+    atualizarDashboard();
+  }
+
+  reader.readAsText(file);
 }
