@@ -32,3 +32,9 @@ input{padding:10px;margin:5px 0;width:100%}
 button{cursor:pointer}
 ul{margin-top:10px;color: bisque;}
 .login{width:400px;text-align:center}
+
+.cards{display:flex;gap:20px}
+input{padding:10px;margin:5px 0;width:100%}
+button{cursor:pointer}
+ul{margin-top:10px;color: bisque;}
+.login{width:400px;text-align:center}
